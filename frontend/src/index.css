@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+
+    /* Vibrant violet primary */
+    --primary: 263 84% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 30% 96%;
+    --secondary-foreground: 263 84% 30%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 295 80% 96%;
+    --accent-foreground: 295 80% 30%;
+
+    --destructive: 350 89% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 25 95% 53%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 263 84% 58%;
+
+    --radius: 0.75rem;
+
+    /* Vibrant accent palette (for stat cards / heroes / charts) */
+    --hue-violet: 263 84% 58%;
+    --hue-fuchsia: 320 91% 60%;
+    --hue-pink: 340 82% 62%;
+    --hue-orange: 21 90% 56%;
+    --hue-amber: 38 92% 50%;
+    --hue-lime: 84 81% 44%;
+    --hue-cyan: 188 86% 53%;
+    --hue-indigo: 240 84% 62%;
+  }
+
+  .dark {
+    --background: 260 25% 6%;
+    --foreground: 0 0% 98%;
+
+    --card: 260 25% 9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 260 25% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 262 84% 65%;
+    --primary-foreground: 260 25% 8%;
+
+    --secondary: 260 20% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 260 18% 14%;
+    --muted-foreground: 240 5% 70%;
+
+    --accent: 295 30% 18%;
+    --accent-foreground: 295 80% 88%;
+
+    --destructive: 350 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 160 70% 48%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 25 95% 58%;
+    --warning-foreground: 260 25% 8%;
+
+    --border: 260 18% 17%;
+    --input: 260 18% 17%;
+    --ring: 262 84% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    background-image:
+      radial-gradient(circle at 0% 0%, hsl(var(--primary) / 0.05), transparent 40%),
+      radial-gradient(circle at 100% 0%, hsl(var(--hue-fuchsia) / 0.05), transparent 40%);
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+}
+
+@layer utilities {
+  .gradient-text-rainbow {
+    background: linear-gradient(120deg,
+      hsl(var(--hue-violet)),
+      hsl(var(--hue-fuchsia)),
+      hsl(var(--hue-orange))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg,
+      hsl(var(--hue-violet)) 0%,
+      hsl(var(--hue-fuchsia)) 50%,
+      hsl(var(--hue-orange)) 100%
+    );
+  }
+  .gradient-violet-pink {
+    background: linear-gradient(135deg, hsl(var(--hue-violet)), hsl(var(--hue-pink)));
+  }
+  .gradient-cyan-indigo {
+    background: linear-gradient(135deg, hsl(var(--hue-cyan)), hsl(var(--hue-indigo)));
+  }
+  .gradient-lime-emerald {
+    background: linear-gradient(135deg, hsl(var(--hue-lime)), hsl(var(--success)));
+  }
+  .gradient-amber-orange {
+    background: linear-gradient(135deg, hsl(var(--hue-amber)), hsl(var(--hue-orange)));
+  }
+  .gradient-fuchsia-rose {
+    background: linear-gradient(135deg, hsl(var(--hue-fuchsia)), hsl(var(--destructive)));
+  }
+  .glow-primary {
+    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.4);
+  }
+}
